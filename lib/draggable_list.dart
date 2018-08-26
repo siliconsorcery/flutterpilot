@@ -55,6 +55,7 @@ class DraggableListDemoState extends State<DraggableListDemo> {
         return SizedBox(
           child: 
           Card(
+            color: (canDrag(index)) ? Colors.white : Colors.grey[300],
             child: ListTile(
               title: Text(items[index]),
             ),
@@ -62,17 +63,20 @@ class DraggableListDemoState extends State<DraggableListDemo> {
         );
       },
       onDragFinish: (before, after) {
-        print('on drag finish $before $after');
         String data = items[before];
         items.removeAt(before);
         items.insert(after, data);
       },
       canDrag: (index) {
-        print('can drag $index');
-        return index != 3; //disable drag for index 3
+        return canDrag(index); //disable drag for index 3
       },
       canBeDraggedTo: (one, two) => true,
       dragElevation: 8.0,
     );
   }
+
+  bool canDrag(index) {
+    return (index != 3);
+  }
+
 }
