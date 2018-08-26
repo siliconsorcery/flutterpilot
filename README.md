@@ -9,7 +9,7 @@ For help getting started with Flutter, view our online
 
 ## Questions
 
-<a href="https://twitter.com/siliconsorcery"><img src="./icons/twitter-icon.png?raw=true" width="60"></a>
+<a href="https://twitter.com/siliconsorcery"><img src="./assets/twitter-icon.png?raw=true" width="60"></a>
 
 ## Credits
 Bhavik Makwana, [GitHub](https://github.com/ibhavikmakwana/FlutterPlayground)
