@@ -1,0 +1,49 @@
+name: pilot
+description: A test pilot flutter playground
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.0.0-dev.68.0 <3.0.0"
+
+dependencies:
+  cached_network_image: #^0.4.1+1  # Patched for dart 2 environment
+    git: git://github.com/Cretezy/flutter_cached_network_image.git 
+  cupertino_icons: ^0.1.2
+  dragable_flutter_list: any #^0.1.4
+  diagonal: # Patched for dart 2 environment
+    git: git://github.com/figengungor/diagonal.git
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  intl:
+  intl_translation: any #"^0.16.6"
+  font_awesome_flutter:
+  read_more_text: # Patched for dart 2 environment
+    git: git://github.com/figengungor/read_more_text
+  shared_preferences: any #^0.4.2
+  transparent_image: any #^0.1.0
+  url_launcher: any #^3.0.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+  assets:
+  # https://www.imdb.com/title/tt4154756/mediaviewer/rm4044245504
+  - assets/avengers.jpg 
+  - assets/backdrop.jpg 
+  - assets/background.jpg 
+  - assets/dog.jpg 
+  - assets/placeholder.png
+  fonts:
+    - family: Roboto
+      fonts:
+        - asset: assets/Roboto-Medium.ttf
+          style: normal
+        - asset: assets/Roboto-Regular.ttf
+          weight: 400
+        - asset: assets/Roboto-Bold.ttf
+          weight: 700
