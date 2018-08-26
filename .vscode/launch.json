@@ -68,7 +68,7 @@
             "name": "counter",
             "request": "launch",
             "type": "dart",
-            "program": "${workspacefolder}lib/counter.dart"
+            "program": "${workspacefolder}lib/examples/counter.dart"
         },
         {
             "name": "diagonal",
@@ -92,7 +92,7 @@
             "name": "draggable_list",
             "request": "launch",
             "type": "dart",
-            "program": "${workspacefolder}lib/draggable_list.dart"
+            "program": "${workspacefolder}lib/examples/draggable_list.dart"
         },
         {
             "name": "drawer",
@@ -188,7 +188,7 @@
             "name": "saturation",
             "request": "launch",
             "type": "dart",
-            "program": "${workspacefolder}lib/saturation.dart"
+            "program": "${workspacefolder}lib/examples/saturation.dart"
         },
         {
             "name": "shared_prefs",
@@ -200,7 +200,7 @@
             "name": "signature",
             "request": "launch",
             "type": "dart",
-            "program": "${workspacefolder}lib/signature.dart"
+            "program": "${workspacefolder}lib/examples/signature.dart"
         },
         {
             "name": "single_child_scroll_view",
@@ -218,7 +218,7 @@
             "name": "spin_tween",
             "request": "launch",
             "type": "dart",
-            "program": "${workspacefolder}lib/spin_tween.dart"
+            "program": "${workspacefolder}lib/examples/spin_tween.dart"
         },
         {
             "name": "stack",

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:pilot/draggable_list.dart';
-import 'package:pilot/signature.dart';
+import 'package:pilot/examples/draggable_list.dart';
+import 'package:pilot/examples/signature.dart';
 import 'package:pilot/strings.dart';
 import 'package:pilot/ibhavikmakwana/ui/about_list_title.dart';
 import 'package:pilot/ibhavikmakwana/ui/animated_icons.dart';
@@ -18,7 +18,7 @@ import 'package:pilot/ibhavikmakwana/ui/staggered.dart';
 import 'package:pilot/ibhavikmakwana/ui/stepper.dart';
 import 'package:pilot/ibhavikmakwana/ui/tab_bar.dart';
 import 'package:pilot/ibhavikmakwana/ui/text.dart';
-import 'package:pilot/saturation.dart';
+import 'package:pilot/examples/saturation.dart';
 
 void main() => runApp(MyApp());
 
@@ -108,7 +108,6 @@ final List<Example> examples = [
 ];
 
 class MyApp extends StatelessWidget {
-
 
   @override
   Widget build(BuildContext context) {
