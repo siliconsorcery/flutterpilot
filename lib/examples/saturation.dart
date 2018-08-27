@@ -3,14 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
-void main() =>
-	runApp(
-		MaterialApp(
-			home: Material(
-				child: SaturationExample(title: "Saturation Fade"),
-			),
-		),
-	);
+void main() => runApp(MaterialApp(home: Material(child: SaturationExample())));
 
 class TestItem extends StatefulWidget {
 	@override
@@ -138,7 +131,7 @@ class SaturationRender extends RenderProxyBox {
 class SaturationExample extends StatelessWidget {
   SaturationExample({
     Key key,
-    this.title = "",
+    this.title = "Saturation Playground",
   }) : super(key: key);
   final String title;
 

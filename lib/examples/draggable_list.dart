@@ -7,7 +7,7 @@ void main() => runApp(MaterialApp(home: DraggableListExample()));
 class DraggableListExample extends StatelessWidget {
   DraggableListExample({
     Key key,
-    this.title = "Draggable List Example",
+    this.title = "Draggable List Playground",
   }): super(key: key);
   final String title;
 

@@ -40,20 +40,18 @@ class _MyHomePageState extends State<MyHomePage> {
   final List<Example> _exampleList = [
     Example(
       title: "Figen Güngör Playground",
+      color: Colors.yellow[200],
       child: FigenGungor(),
     ),
     Example(
-      title: "Bhavik Makwana",
+      title: "Bhavik Makwana Playground",
+      color: Colors.yellow[200],
       child: IBhavikMakwana(),
     ),
     Example(
       title: "Spin Tween",
       subtitle: "Raouf Rahiche",
       child: SpinTween(),
-    ),
-    Example(
-      title: "Animations",
-      child: AnimationExample(),
     ),
     Example(
       title: "Draggable List",

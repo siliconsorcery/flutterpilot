@@ -44,6 +44,11 @@ class AngleDelayTween extends Tween<double> {
 }
 
 class SpinTween extends StatefulWidget {
+  SpinTween({
+    Key key,
+    this.title = "Spin Tween Playground",
+  }): super(key: key);
+  final String title;
   @override
   _SpinTweenState createState() => _SpinTweenState();
 }
@@ -78,7 +83,7 @@ class _SpinTweenState extends State<SpinTween> {
     return Scaffold(
       backgroundColor: bkColor,
       appBar: AppBar(
-        title: Text("Spin Tween"),
+        title: Text(widget.title),
       ),
       body: GestureDetector(
         onPanStart: _onPanStart,

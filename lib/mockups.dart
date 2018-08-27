@@ -1,16 +1,23 @@
 import 'package:flutter/material.dart';
 
 class Example {
-  Example({this.title, this.subtitle, this.child});
+  Example({
+    this.title, 
+    this.subtitle, 
+    this.color = Colors.white,
+    this.child,
+  });
   final String title;
   final String subtitle;
-  Widget child;
+  final Color color;
+  final Widget child;
 }
 
 class Examples extends StatelessWidget {
   Examples({
     Key key,
     @required this.list,
+    y
   }): super(key: key);
   final List<Example> list;
 
@@ -45,33 +52,32 @@ class ExampleTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: EdgeInsets.all(3.0),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(0.0)),
-      elevation: 1.0,
-      child: Container(
-        decoration: BoxDecoration(
-          // color: Colors.yellow, 
-          // gradient: LinearGradient(colors: [Colors.yellow, Colors.red]),
-          // image: DecorationImage(
-          //   colorFilter: ColorFilter.mode(Colors.white.withAlpha(200), BlendMode.lighten),
-          //   fit: BoxFit.cover,
-          //   image: Image.asset('assets/avengers.jpg').image,
-          // ),
-          border: Border(
-            left: BorderSide(
-              width: 8.0,
-              color: Colors.lightGreen,
+      margin: EdgeInsets.all(4.0),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4.0)),
+      child: InkWell(
+        onTap: () {
+          Navigator.push(
+            context, MaterialPageRoute(
+              builder: (context) => example.child,
+            ),
+          );
+        },
+        child: Container(
+          decoration: BoxDecoration(
+            color: example.color, 
+            // gradient: LinearGradient(colors: [Colors.yellow, Colors.red]),
+            // image: DecorationImage(
+            //   colorFilter: ColorFilter.mode(Colors.white.withAlpha(200), BlendMode.lighten),
+            //   fit: BoxFit.cover,
+            //   image: Image.asset('assets/avengers.jpg').image,
+            // ),
+            border: Border(
+              left: BorderSide(
+                width: 8.0,
+                color: Colors.lightGreen,
+              ),
             ),
           ),
-        ),
-        child: InkWell(
-          onTap: () {
-            Navigator.push(
-              context, MaterialPageRoute(
-                builder: (context) => example.child,
-              ),
-            );
-          },
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.center,

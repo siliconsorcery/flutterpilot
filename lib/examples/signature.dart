@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:vector_math/vector_math_64.dart' as vector;
 
 // https://stackoverflow.com/questions/46241071/create-signature-area-for-mobile-app-in-dart-flutter 
-void main() => runApp(MaterialApp(home: SignatureExample(title: "Signature Example")));
+void main() => runApp(MaterialApp(home: SignatureExample()));
 
 class SignatureExample extends StatelessWidget {
   SignatureExample({
     Key key,
-    this.title = "",
+    this.title = "Signature Playground",
   }): super(key: key);
   final String title;
 
