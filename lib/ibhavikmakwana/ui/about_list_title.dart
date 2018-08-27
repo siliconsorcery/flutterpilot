@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 
-class AboutListTileExample extends StatefulWidget {
-  final String title;
+void main() => runApp(MaterialApp(home: AboutListTileExample()));
 
-  AboutListTileExample({Key key, this.title}) : super(key: key);
+class AboutListTileExample extends StatefulWidget {
+  AboutListTileExample({
+    Key key, 
+    this.title = "About List Tile Playground",
+  }) : super(key: key);
+  final String title;
 
   @override
   _AboutListTileState createState() => new _AboutListTileState();

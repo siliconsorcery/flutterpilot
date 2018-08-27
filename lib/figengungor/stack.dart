@@ -1,78 +1,55 @@
 import 'package:flutter/material.dart';
+import 'package:pilot/mockups.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(MaterialApp(home: StackExample()));
 
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Stack Playground',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      routes: {
-        '/': (context) => HomePage(),
-        '/demo': (context) => DemoPage(),
-        '/demo2': (context) => Demo2Page(),
-        '/demo3': (context) => Demo3Page(),
-        '/demo4': (context) => Demo4Page(),
-        '/demo5': (context) => Demo5Page(),
-        '/demo6': (context) => Demo6Page(),
-      },
-    );
-  }
-}
+class StackExample extends StatelessWidget {
+  StackExample({
+    Key key,
+    this.title = "Stack Playground"
+  }): super(key: key);
+  final String title;
 
-class HomePage extends StatelessWidget {
-  final _navItems = [
-    NavItem('Stack alignment', '/demo'),
-    NavItem('Stack with Positioned children', '/demo2'),
-    NavItem('Centering a Positioned in Stack', '/demo3'),
-    NavItem('Positioned and non-positioned mix', '/demo4'),
-    NavItem('Bottom Header Text on Image', '/demo5'),
-    NavItem('Bottom Header Text on Image with Positioned', '/demo6'),
+  final List<Example> _exampleList = [
+    Example(
+      title: "Stack alignment",
+      child: DemoPage(),
+    ),
+    Example(
+      title: "Stack with Positioned children",
+      child: Demo2Page(),
+    ),
+    Example(
+      title: "Centering a Positioned in Stack",
+      child: Demo3Page(),
+    ),
+    Example(
+      title: "Positioned and non-positioned mix",
+      child: Demo4Page(),
+    ),
+    Example(
+      title: "Bottom Header Text on Image",
+      child: Demo5Page(),
+    ),
+    Example(
+      title: "Bottom Header Text on Image with Positioned",
+      child: Demo6Page(),
+    ),
+
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Stack Playground'),
+        title: Text(title),
       ),
-      body: _getNavButtons(context),
+      body: Container(
+        color: Colors.grey[300],
+        child: Examples(list: _exampleList),
+      )
     );
   }
-
-  _getNavButtons(BuildContext context) {
-    return ListView(
-      children: _navItems
-          .map(
-            (item) => Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: RaisedButton(
-                    padding: EdgeInsets.all(8.0),
-                    color: Colors.green,
-                    onPressed: () {
-                      Navigator.pushNamed(context, item.routeName);
-                    },
-                    child: Text(
-                      item.title,
-                      textAlign: TextAlign.center,
-                      style: TextStyle(color: Colors.white, fontSize: 16.0),
-                    ),
-                  ),
-                ),
-          )
-          .toList(),
-    );
-  }
-}
-
-class NavItem {
-  final title;
-  final routeName;
-
-  NavItem(this.title, this.routeName);
 }
 
 class DemoPage extends StatelessWidget {

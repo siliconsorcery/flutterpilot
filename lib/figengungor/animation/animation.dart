@@ -4,76 +4,49 @@ import 'package:pilot/figengungor/animation/animation_widget_examples.dart';
 import 'package:pilot/figengungor/animation/basic_animation_demo.dart';
 import 'package:pilot/figengungor/animation/custom_animated_widget_demo.dart';
 import 'package:pilot/figengungor/animation/route_animation_demo.dart';
+import 'package:pilot/mockups.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(MaterialApp(home: AnimationExample()));
 
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Animations Playground',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      routes: {
-        '/': (context) => HomePage(),
-        '/basic_animation_demo': (context) => BasicAnimationDemo(),
-        '/custom_animated_widget_demo': (context) => CustomAnimatedWidgetDemo(),
-        '/animated_widget_examples': (context) => AnimatedWidgetExamples(),
-        '/animation_state_demo': (context) => AnimationStateDemo(),
-        '/route_animation_demo': (context) => RouteAnimationDemo(),
-      },
-    );
-  }
-}
+class AnimationExample extends StatelessWidget {
 
-class HomePage extends StatelessWidget {
-  final _navItems = [
-    NavItem('Basic Animation Demo', '/basic_animation_demo'),
-    NavItem('Custom AnimatedWidget Demo', '/custom_animated_widget_demo'),
-    NavItem('AnimatedWidget Examples', '/animated_widget_examples'),
-    NavItem('Animation State Demo', '/animation_state_demo'),
-    NavItem('Route Animation Demo', '/route_animation_demo'),
+  final List<Example> _exampleList = [
+    Example(
+      title: 'Basic Animation Demo',
+      child: BasicAnimationDemo(),
+    ),
+    Example(
+      title: 'Custom AnimatedWidget',
+      child: CustomAnimatedWidgetDemo(),
+    ),
+    Example(
+      title: 'AnimatedWidget Examples',
+      child: AnimatedWidgetExamples(),
+    ),
+    Example(
+      title: 'Animation State Demo',
+      child: AnimationStateDemo(),
+    ),
+    Example(
+      title: 'Route Animation Demo',
+      child: RouteAnimationDemo(),
+    ),
   ];
+  
+  AnimationExample({
+      Key key,
+    this.title = "Animation Examples",
+  }): super(key: key);
+  final String title;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Animations Playground'),
+      appBar: AppBar(title: Text(title)),
+      body: Container(
+        color: Colors.grey[300],
+        child: Examples(list: _exampleList),
       ),
-      body: _getNavButtons(context),
     );
   }
-
-  _getNavButtons(BuildContext context) {
-    return ListView(
-      children: _navItems
-          .map(
-            (item) => Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: RaisedButton(
-                    padding: EdgeInsets.all(8.0),
-                    color: Colors.green,
-                    onPressed: () {
-                      Navigator.pushNamed(context, item.routeName);
-                    },
-                    child: Text(
-                      item.title,
-                      textAlign: TextAlign.center,
-                      style: TextStyle(color: Colors.white, fontSize: 16.0),
-                    ),
-                  ),
-                ),
-          )
-          .toList(),
-    );
-  }
-}
-
-class NavItem {
-  final title;
-  final routeName;
-
-  NavItem(this.title, this.routeName);
 }

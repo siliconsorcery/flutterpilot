@@ -1,79 +1,51 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:pilot/mockups.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(MaterialApp(home: DialogExample()));
 
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return new MaterialApp(
-      title: 'Dialog Demo',
-      theme: new ThemeData(
-        primarySwatch: Colors.blue,
-        accentColor: Colors.pink,
-      ),
-      routes: {
-        '/': (context) => HomePage(),
-        '/alert_dialog_demo': (context) => AlertDialogDemo(),
-        '/full_screen_dialog_demo': (context) => FullScreenDialogDemo(),
-        '/simple_dialog_demo': (context) => SimpleDialogDemo(),
-        '/alert_dialog_single_choice_demo': (context) =>
-            AlertDialogSingleChoiceDemo(),
-        '/date_and_time_picker_demo': (context) => DateAndTimePickerDemo(),
-      },
-    );
-  }
-}
+class DialogExample extends StatelessWidget {
+  DialogExample({
+    Key key,
+    this.title = "Dialog Example"
+  }): super(key: key);
+  final String title;
 
-class HomePage extends StatelessWidget {
-  final _navItems = [
-    NavItem('Alert Dialog', '/alert_dialog_demo'),
-    NavItem('Full Screen Dialog', '/full_screen_dialog_demo'),
-    NavItem('Simple Dialog', '/simple_dialog_demo'),
-    NavItem('Alert Dialog Single Choice', '/alert_dialog_single_choice_demo'),
-    NavItem('Date and TimePicker', '/date_and_time_picker_demo'),
+  final List<Example> _exampleList = [
+    Example(
+      title: "Alert Dialog",
+      child: AlertDialogDemo(),
+    ),
+    Example(
+      title: "Full Screen Dialog",
+      child: FullScreenDialogDemo(),
+    ),
+    Example(
+      title: "Simple Dialog",
+      child: SimpleDialogDemo(),
+    ),
+    Example(
+      title: "Alert Dialog Single Choice",
+      child: AlertDialogSingleChoiceDemo(),
+    ),
+    Example(
+      title: "Date and TimePicker",
+      child: DateAndTimePickerDemo(),
+    ),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Dialog Playground'),
+        title: Text(title),
       ),
-      body: _getNavButtons(context),
+      body: Container(
+        color: Colors.grey[300],
+        child: Examples(list: _exampleList),
+      )
     );
   }
-
-  _getNavButtons(BuildContext context) {
-    return ListView(
-      children: _navItems
-          .map(
-            (item) => Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: RaisedButton(
-                    padding: EdgeInsets.all(8.0),
-                    color: Colors.green,
-                    onPressed: () {
-                      Navigator.pushNamed(context, item.routeName);
-                    },
-                    child: Text(
-                      item.title,
-                      textAlign: TextAlign.center,
-                      style: TextStyle(color: Colors.white, fontSize: 16.0),
-                    ),
-                  ),
-                ),
-          )
-          .toList(),
-    );
-  }
-}
-
-class NavItem {
-  final title;
-  final routeName;
-
-  NavItem(this.title, this.routeName);
 }
 
 class AlertDialogDemo extends StatelessWidget {

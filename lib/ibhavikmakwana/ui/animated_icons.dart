@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 
+void main() => runApp(MaterialApp(home: AnimatedIconsDemo()));
+
 class AnimatedIconsDemo extends StatefulWidget {
-  AnimatedIconsDemo({Key key, this.title}) : super(key: key);
+  AnimatedIconsDemo({
+    Key key, 
+    this.title = "Animated Icons Playground",
+  }) : super(key: key);
+  final String title;
 
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
@@ -12,7 +18,6 @@ class AnimatedIconsDemo extends StatefulWidget {
   // used by the build method of the State. Fields in a Widget subclass are
   // always marked "final".
 
-  final String title;
 
   @override
   _AnimatedIconsState createState() => new _AnimatedIconsState();

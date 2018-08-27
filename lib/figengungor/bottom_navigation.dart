@@ -1,65 +1,86 @@
 import 'package:flutter/material.dart';
+import 'package:pilot/mockups.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(MaterialApp(home: BottomNavigationExample()));
 
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(primarySwatch: Colors.blue, accentColor: Colors.pink),
-      routes: {
-        '/': (context) => HomePage(),
-        '/demo1': (context) => Demo1(),
-        '/demo2': (context) => Demo2(),
-        '/demo3': (context) => Demo3(),
-      },
-    );
-  }
-}
+class BottomNavigationExample extends StatelessWidget {
+  BottomNavigationExample({
+    Key key,
+    this.title = "Bottom Navigation",
+  }): super(key: key);
+  final String title;
 
-class HomePage extends StatelessWidget {
-  static const _navItems = [
-    const NavItem('Demo 1: Fixed', '/demo1'),
-    const NavItem('Demo 2: Active-Inactive Colors', '/demo2'),
-    const NavItem('Demo 3: Shifting', '/demo3'),
+ final List<Example> _exampleList = [
+    Example(
+      title: "Fixed",
+      child: Demo1(),
+    ),
+    Example(
+      title: "Active-Inactive Colors",
+      child: Demo2(),
+    ),
+    Example(
+      title: "Shifting with Background Color",
+      child: Demo3(),
+    ),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('BottomNavigationBar Playground'),
+        title: Text(title),
       ),
-      body: _getDemoList(context),
+      body: Container(
+        color: Colors.grey[300],
+        child: Examples(list: _exampleList,)
+      ),
     );
   }
-
-  _getDemoList(BuildContext context) {
-    return ListView(children: _getNavButtons(context));
-  }
-
-  _getNavButtons(BuildContext context) {
-    return _navItems.map((item) {
-      return Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: RaisedButton(
-          child: Text(item.title),
-          onPressed: () {
-            Navigator.pushNamed(context, item.routeName);
-          },
-        ),
-      );
-    }).toList();
-  }
 }
 
-class NavItem {
-  final title;
-  final routeName;
+// class HomePage extends StatelessWidget {
+//   static const _navItems = [
+//     const NavItem('Demo 1: Fixed', '/demo1'),
+//     const NavItem('Demo 2: Active-Inactive Colors', '/demo2'),
+//     const NavItem('Demo 3: Shifting', '/demo3'),
+//   ];
 
-  const NavItem(this.title, this.routeName);
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: Text('BottomNavigationBar Playground'),
+//       ),
+//       body: _getDemoList(context),
+//     );
+//   }
+
+//   _getDemoList(BuildContext context) {
+//     return ListView(children: _getNavButtons(context));
+//   }
+
+//   _getNavButtons(BuildContext context) {
+//     return _navItems.map((item) {
+//       return Padding(
+//         padding: const EdgeInsets.all(8.0),
+//         child: RaisedButton(
+//           child: Text(item.title),
+//           onPressed: () {
+//             Navigator.pushNamed(context, item.routeName);
+//           },
+//         ),
+//       );
+//     }).toList();
+//   }
+// }
+
+// class NavItem {
+//   final title;
+//   final routeName;
+
+//   const NavItem(this.title, this.routeName);
+// }
 
 class Demo1 extends StatefulWidget {
   @override

@@ -1,86 +1,63 @@
 import 'package:flutter/material.dart';
+import 'package:pilot/mockups.dart';
 
-void main() => runApp(new MyApp());
+void main() => runApp(MaterialApp(home: TabBarExample()));
 
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return new MaterialApp(
-      title: 'Tabs Demo',
-      theme: new ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      routes: {
-        '/': (context) => HomePage(),
-        '/tab_bar_text': (context) => TabBarText(),
-        '/tab_bar_icon': (context) => TabBarIcon(),
-        '/tab_bar_text_icon': (context) => TabBarTextIcon(),
-        '/tab_bar_scrollable': (context) => TabBarScrollable(),
-        '/tab_bar_indicator': (context) => TabBarIndicator(),
-        '/tab_bar_style': (context) => TabBarStyle(),
-        '/tab_bar_controller': (context) => TabBarController(),
-      },
-    );
-  }
-}
+class TabBarExample extends StatelessWidget {
+  TabBarExample({
+    Key key,
+    this.title = "Tabbar Playground"
+  }): super(key: key);
+  final String title;
 
-class HomePage extends StatelessWidget {
-  final _navItems = [
-    NavItem('TabBar Text', '/tab_bar_text'),
-    NavItem('TabBar Icon', '/tab_bar_icon'),
-    NavItem('TabBar Text & Icon', '/tab_bar_text_icon'),
-    NavItem('TabBar Scrollable', '/tab_bar_scrollable'),
-    NavItem('TabBar IndicatorSize', '/tab_bar_indicator'),
-    NavItem('TabBar Style', '/tab_bar_style'),
-    NavItem('TabController', '/tab_bar_controller'),
+  final List<Example> _exampleList = [
+    Example(
+      title: "Text",
+      child: TabBarText(),
+    ),
+    Example(
+      title: "Icon",
+      child: TabBarIcon(),
+    ),
+    Example(
+      title: "Text & Icon",
+      child: TabBarTextIcon(),
+    ),
+    Example(
+      title: "Scrollable",
+      child: TabBarScrollable(),
+    ),
+    Example(
+      title: "IndicatorSize",
+      child: TabBarIndicator(),
+    ),
+    Example(
+      title: "Style",
+      child: TabBarStyle(),
+    ),
+    Example(
+      title: "Controller",
+      child: TabBarController(),
+    ),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Tabs Playground'),
+        title: Text(title),
       ),
-      body: _getNavButtons(context),
-    );
-  }
-
-  _getNavButtons(BuildContext context) {
-    return ListView(
-      children: _navItems
-          .map(
-            (item) => Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: RaisedButton(
-                    padding: EdgeInsets.all(8.0),
-                    color: Colors.green,
-                    onPressed: () {
-                      Navigator.pushNamed(context, item.routeName);
-                    },
-                    child: Text(
-                      item.title,
-                      textAlign: TextAlign.center,
-                      style: TextStyle(color: Colors.white, fontSize: 16.0),
-                    ),
-                  ),
-                ),
-          )
-          .toList(),
+      body: Container(
+        color: Colors.grey[300],
+        child: Examples(list: _exampleList),
+      )
     );
   }
 }
 
-class NavItem {
-  final title;
-  final routeName;
 
-  NavItem(this.title, this.routeName);
-}
-
-//Credits
-
-/*https://github.com/flutter/flutter/blob/master/examples/flutter_gallery/lib
- /demo/material/tabs_fab_demo.dart*/
+// Credits
+// https://github.com/flutter/flutter/blob/master/examples/flutter_gallery/lib/demo/material/tabs_fab_demo.dart
 
 class TabBarController extends StatefulWidget {
   @override

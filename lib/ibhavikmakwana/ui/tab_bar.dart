@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:pilot/mockups.dart';
 
-class TabBarExample extends StatefulWidget {
-  final String title;
+void main() => runApp(MaterialApp(home: TabBarExample()));
 
-  TabBarExample({Key key, this.title}) : super(key: key);
+class TabBarExample extends StatefulWidget {
+  TabBarExample({
+    Key key, 
+    this.title = "Tab Bar Playground",
+  }) : super(key: key);
+  final String title;
 
   @override
   _TabBarExampleState createState() => _TabBarExampleState();

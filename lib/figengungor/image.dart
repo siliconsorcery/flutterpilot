@@ -1,83 +1,60 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:pilot/mockups.dart';
 import 'package:transparent_image/transparent_image.dart';
 
-void main() => runApp(new MyApp());
+void main() => runApp(MaterialApp(home: ImageExample()));
 
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return new MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      routes: {
-        '/': (context) => HomePage(),
-        '/image_asset_background': (context) => ImageAssetBackground(),
-        '/image_asset_background2': (context) => ImageAssetBackground2(),
-        '/image_network': (context) => ImageNetwork(),
-        '/image_box_fit': (context) => ImageBoxFit(),
-        '/image_aspect_ratio': (context) => ImageAspectRatio(),
-        '/fade_in_image_placeholder': (context) => FadeInImagePlaceholder(),
-        '/cached_network_image_placeholder': (context) =>
-            CachedNetworkImagePlaceholder(),
-      },
-    );
-  }
-}
+class ImageExample extends StatelessWidget {
+  ImageExample({
+    Key key,
+    this.title = "Image Playground"
+  }): super(key: key);
+  final String title;
 
-class HomePage extends StatelessWidget {
-  final _navItems = [
-    NavItem('Image Asset Background', '/image_asset_background'),
-    NavItem('Image Asset Background 2', '/image_asset_background2'),
-    NavItem('Image Network', '/image_network'),
-    NavItem('Image BoxFit', '/image_box_fit'),
-    NavItem('Image AspectRatio', '/image_aspect_ratio'),
-    NavItem('FadeInImage Placeholder', '/fade_in_image_placeholder'),
-    NavItem(
-        'CachedNetworkImage Placeholder', '/cached_network_image_placeholder'),
+  final List<Example> _exampleList = [
+    Example(
+      title: "Asset Background",
+      child: ImageAssetBackground(),
+    ),
+    Example(
+      title: "Asset Background 2",
+      child: ImageAssetBackground2(),
+    ),
+    Example(
+      title: "Network",
+      child: ImageNetwork(),
+    ),
+    Example(
+      title: "Box Fit",
+      child: ImageBoxFit(),
+    ),
+    Example(
+      title: "Aspect Ratio",
+      child: ImageAspectRatio(),
+    ),
+    Example(
+      title: "Fade In",
+      child: FadeInImagePlaceholder(),
+    ),
+    Example(
+      title: "Cached Network Image",
+      child: CachedNetworkImagePlaceholder(),
+    ),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Image Playground'),
+        title: Text(title),
       ),
-      body: _getNavButtons(context),
+      body: Container(
+        color: Colors.grey[300],
+        child: Examples(list: _exampleList),
+      )
     );
   }
-
-  _getNavButtons(BuildContext context) {
-    return ListView(
-      children: _navItems
-          .map(
-            (item) => Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: RaisedButton(
-                    padding: EdgeInsets.all(8.0),
-                    color: Colors.green,
-                    onPressed: () {
-                      Navigator.pushNamed(context, item.routeName);
-                    },
-                    child: Text(
-                      item.title,
-                      textAlign: TextAlign.center,
-                      style: TextStyle(color: Colors.white, fontSize: 16.0),
-                    ),
-                  ),
-                ),
-          )
-          .toList(),
-    );
-  }
-}
-
-class NavItem {
-  final title;
-  final routeName;
-  NavItem(this.title, this.routeName);
 }
 
 class CachedNetworkImagePlaceholder extends StatelessWidget {

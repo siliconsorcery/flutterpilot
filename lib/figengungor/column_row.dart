@@ -1,79 +1,54 @@
 import 'package:flutter/material.dart';
+import 'package:pilot/mockups.dart';
 
-void main() => runApp(new MyApp());
+void main() => runApp(MaterialApp(home: ColumnRowExample()));
 
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return new MaterialApp(
-      title: 'Column & Row Demo',
-      theme: new ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      routes: {
-        '/': (context) => HomePage(),
-        '/row_example': (context) => RowExample(),
-        '/column_example': (context) => ColumnExample(),
-        '/row_cross_axis_alignment': (context) => RowCrossAxisAlignment(),
-        '/column_cross_axis_alignment': (context) => ColumnCrossAxisAlignment(),
-        '/row_main_axis_size': (context) => RowMainAxisSize(),
-        '/column_main_axis_size': (context) => ColumnMainAxisSize(),
-      },
-    );
-  }
-}
+class ColumnRowExample extends StatelessWidget {
+  ColumnRowExample({
+    Key key,
+    this.title = "Column & Row Demo"
+  }): super(key: key);
+  final String title;
 
-class HomePage extends StatelessWidget {
-  final _navItems = [
-    NavItem('Row Examples', '/row_example'),
-    NavItem('Column Examples', '/column_example'),
-    NavItem('Row CrossAxisAlignment Examples', '/row_cross_axis_alignment'),
-    NavItem(
-        'Column CrossAxisAlignment Examples', '/column_cross_axis_alignment'),
-    NavItem('Row MainAxisSize', '/row_main_axis_size'),
-    NavItem('Column MainAxisSize', '/column_main_axis_size')
+final List<Example> _exampleList = [
+    Example(
+      title: "Row Examples",
+      child: RowExample(),
+    ),
+    Example(
+      title: "Column Examples",
+      child: ColumnExample(),
+    ),
+    Example(
+      title: "Row CrossAxisAlignment Examples",
+      child: RowCrossAxisAlignment(),
+    ),
+    Example(
+      title: "Column CrossAxisAlignment Examples",
+      child: ColumnCrossAxisAlignment(),
+    ),
+    Example(
+      title: "Row MainAxisSize",
+      child: RowMainAxisSize(),
+    ),
+    Example(
+      title: "Column MainAxisSize",
+      child: ColumnMainAxisSize(),
+    ),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Column & Row Playground'),
+        title: Text(title),
       ),
-      body: _getNavButtons(context),
+      body: Container(
+        color: Colors.grey[300],
+        child: Examples(list: _exampleList),
+      )
     );
   }
-
-  _getNavButtons(BuildContext context) {
-    return ListView(
-      children: _navItems
-          .map(
-            (item) => Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: RaisedButton(
-                    padding: EdgeInsets.all(8.0),
-                    color: Colors.green,
-                    onPressed: () {
-                      Navigator.pushNamed(context, item.routeName);
-                    },
-                    child: Text(
-                      item.title,
-                      textAlign: TextAlign.center,
-                      style: TextStyle(color: Colors.white, fontSize: 16.0),
-                    ),
-                  ),
-                ),
-          )
-          .toList(),
-    );
-  }
-}
-
-class NavItem {
-  final title;
-  final routeName;
-
-  NavItem(this.title, this.routeName);
 }
 
 class ColumnCrossAxisAlignment extends StatelessWidget {

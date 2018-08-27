@@ -1,11 +1,10 @@
-// by: Raouf_Rachiche
-
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-void main() => runApp(MaterialApp(home: new MyApp()));
+// by: Raouf_Rachiche
+void main() => runApp(MaterialApp(home: SpinTween()));
 
 const Color bkColor = Color(0xFF3A425F);
 const Color btnColor = Color(0xFFFF4C5B);
@@ -44,15 +43,16 @@ class AngleDelayTween extends Tween<double> {
   double evaluate(Animation<double> animation) => lerp(animation.value);
 }
 
-class MyApp extends StatefulWidget {
+class SpinTween extends StatefulWidget {
   @override
-  _MyAppState createState() => _MyAppState();
+  _SpinTweenState createState() => _SpinTweenState();
 }
 
-class _MyAppState extends State<MyApp> {
+class _SpinTweenState extends State<SpinTween> {
   Offset cardOffset = const Offset(0.0, 0.0);
   Offset dragStart;
   Offset dragPosition;
+
   void _onPanStart(DragStartDetails details) {
     dragStart = details.globalPosition;
     setState(() {});
@@ -75,9 +75,11 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-        child: Scaffold(
+    return Scaffold(
       backgroundColor: bkColor,
+      appBar: AppBar(
+        title: Text("Spin Tween"),
+      ),
       body: GestureDetector(
         onPanStart: _onPanStart,
         onPanUpdate: _onPanUpdate,
@@ -91,9 +93,9 @@ class _MyAppState extends State<MyApp> {
           ),
         ),
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      // floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       // floatingActionButton: new FAB(sended: sended),
-    ));
+    );
   }
 }
 
@@ -228,7 +230,7 @@ class _SpinKitCircleState extends State<SpinKitCircle>
   }
 
   Widget _circle(int i, [double delay]) {
-    final _size = widget.size * 0.3, _position = widget.size * .5;
+    final _size = widget.size * 0.12, _position = widget.size * .5;
 
     return Positioned.fill(
       left: _position,

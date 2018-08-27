@@ -17,6 +17,12 @@
             "program": "${workspacefolder}lib/figengungor/app_bar.dart"
         },
         {
+            "name": "app_bar_2",
+            "request": "launch",
+            "type": "dart",
+            "program": "${workspacefolder}lib/ibhavikmakwana/ui/app_bar.dart"
+        },
+        {
             "name": "bottom_navigation",
             "request": "launch",
             "type": "dart",

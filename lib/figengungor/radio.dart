@@ -1,72 +1,38 @@
 import 'package:flutter/material.dart';
+import 'package:pilot/mockups.dart';
 
-void main() => runApp(new MyApp());
+void main() => runApp(MaterialApp(home: RadioExample()));
 
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return new MaterialApp(
-      title: 'Radio Demo',
-      theme: new ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      routes: {
-        '/': (context) => HomePage(),
-        '/radio_simple': (context) => RadioSimple(),
-        '/radio_list_tile_demo': (context) => RadioListTileDemo(),
-      },
-    );
-  }
-}
+class RadioExample extends StatelessWidget {
+  RadioExample({
+    Key key,
+    this.title = "Figen Güngör Playground"
+  }): super(key: key);
+  final String title;
 
-class HomePage extends StatelessWidget {
-  final _navItems = [
-    NavItem('Radio Simple', '/radio_simple'),
-    NavItem('RadioListTile Demo', '/radio_list_tile_demo'),
+  final List<Example> _exampleList = [
+    Example(
+      title: "Simple",
+      child: RadioSimple(),
+    ),
+    Example(
+      title: "List",
+      child: RadioListTileDemo(),
+    ),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Radio Playground'),
+        title: Text(title),
       ),
-      body: _getNavButtons(context),
+      body: Container(
+        color: Colors.grey[300],
+        child: Examples(list: _exampleList),
+      )
     );
   }
-
-  _getNavButtons(BuildContext context) {
-    return ListView(
-      children: _navItems
-          .map(
-            (item) => Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: RaisedButton(
-                    padding: EdgeInsets.all(8.0),
-                    color: Colors.green,
-                    onPressed: () {
-                      Navigator.pushNamed(context, item.routeName);
-                    },
-                    child: Text(
-                      item.title,
-                      textAlign: TextAlign.center,
-                      style: TextStyle(color: Colors.white, fontSize: 16.0),
-                    ),
-                  ),
-                ),
-          )
-          .toList(),
-    );
-  }
-
-}
-
-class NavItem {
-  final title;
-  final routeName;
-
-  NavItem(this.title, this.routeName);
 }
 
 class RadioListTileDemo extends StatefulWidget {

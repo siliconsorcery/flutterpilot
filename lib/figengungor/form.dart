@@ -1,67 +1,38 @@
 import 'package:flutter/material.dart';
+import 'package:pilot/mockups.dart';
 
-void main() => runApp(new MyApp());
+void main() => runApp(MaterialApp(home: FormExample()));
 
-class MyApp extends StatelessWidget {
-  Widget build(BuildContext context) {
-    return new MaterialApp(
-      title: 'Form Demo',
-      theme: new ThemeData(
-        primarySwatch: Colors.blue,
-        accentColor: Colors.pink,
-      ),
-      initialRoute: '/',
-      routes: {
-        '/': (context) => HomePage(),
-        '/login_form_1': (context) => LoginForm1(),
-        '/register_form_1': (context) => RegisterForm1(),
-      },
-    );
-  }
-}
+class FormExample extends StatelessWidget {
+  FormExample({
+    Key key,
+    this.title = "Figen Gungor Playground"
+  }): super(key: key);
+  final String title;
 
-class HomePage extends StatelessWidget {
-  final List<NavItem> navItems = [
-    NavItem('Login Form 1', '/login_form_1'),
-    NavItem('Register Form 1', '/register_form_1'),
+  final List<Example> _exampleList = [
+    Example(
+      title: "Login Form",
+      child: LoginForm1(),
+    ),
+    Example(
+      title: "Register Form",
+      child: RegisterForm1(),
+    ),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Form Playground'),
+        title: Text(title),
       ),
-      body: _getNavButtons(context),
+      body: Container(
+        color: Colors.grey[300],
+        child: Examples(list: _exampleList),
+      )
     );
   }
-
-  _getNavButtons(BuildContext context) {
-    return ListView(
-        children: navItems.map((navItem) {
-          return Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              children: <Widget>[
-                RaisedButton(
-                  child: Text(navItem.title),
-                  color: Theme.of(context).accentColor,
-                  textColor: Colors.white,
-                  onPressed: () {
-                    Navigator.pushNamed(context, navItem.routeName);
-                  },
-                ),
-              ],
-            ),
-          );
-        }).toList());
-  }
-}
-
-class NavItem {
-  final title;
-  final routeName;
-  NavItem(this.title, this.routeName);
 }
 
 class LoginForm1 extends StatefulWidget {
@@ -79,7 +50,7 @@ class LoginForm1State extends State<LoginForm1> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Login Form 1'),
+        title: Text('Login Form'),
       ),
       body: Builder(
         // to create a child context of Scaffold to use SnackBar
@@ -167,7 +138,7 @@ class RegisterForm1State extends State<RegisterForm1> {
     return Scaffold(
       key: _scaffoldKey,
       appBar: AppBar(
-        title: Text('Register Form 1'),
+        title: Text('Register Form'),
       ),
       body: Form(
         key: _formKey,

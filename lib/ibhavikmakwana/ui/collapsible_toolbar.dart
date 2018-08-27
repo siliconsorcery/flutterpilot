@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:pilot/mockups.dart';
 
+void main() => runApp(MaterialApp(home: CollapsibleToolbar()));
 class CollapsibleToolbar extends StatefulWidget {
-  CollapsibleToolbar({Key key, this.title}) : super(key: key);
+  CollapsibleToolbar({
+    Key key, 
+    this.title = "Collapsible Playground",
+  }) : super(key: key);
   final String title;
 
   @override

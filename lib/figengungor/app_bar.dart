@@ -1,110 +1,92 @@
 import 'package:flutter/material.dart';
+import 'package:pilot/mockups.dart';
 
 //Credits:
 //https://material.io/design/components/app-bars-top.html#anatomy
 //https://material.io/design/platform-guidance/cross-platform-adaptation.html#cross-platform-guidelines
 
-main() => runApp(MyApp());
+void main() => runApp(MaterialApp(home: AppBarExample()));
 
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: AppBarPlaygroundScreen(),
-      theme: ThemeData(primarySwatch: Colors.green),
-      routes: <String, WidgetBuilder>{
-        '/appBar1Screen': (BuildContext context) => AppBar1Screen(),
-        '/appBar2Screen': (BuildContext context) => AppBar2Screen(),
-        '/appBar3Screen': (BuildContext context) => AppBar3Screen(),
-        '/appBar4Screen': (BuildContext context) => AppBar4Screen(),
-        '/appBar5Screen': (BuildContext context) => AppBar5Screen(),
-        '/appBar6Screen': (BuildContext context) => AppBar6Screen(),
-        '/appBar7Screen': (BuildContext context) => AppBar7Screen(),
-      },
-    );
-  }
-}
+class AppBarExample extends StatelessWidget {
+  AppBarExample({
+    Key key,
+    this.title = "App Bar",
+  }): super(key: key);
+  final String title;
 
-class AppBarPlaygroundScreen extends StatelessWidget {
-  final List<NavItem> _navItems = [
-    NavItem(
+final List<Example> _exampleList = [
+    Example(
       title: 'Simple',
-      routeName: '/appBar1Screen',
+      child: AppBar1Screen(),
     ),
-    NavItem(
+    Example(
       title: 'Centered Title',
-      routeName: '/appBar2Screen',
+      child: AppBar2Screen(),
     ),
-    NavItem(
+    Example(
       title: 'Leading Icon',
-      routeName: '/appBar3Screen',
+      child: AppBar3Screen(),
     ),
-    NavItem(
+    Example(
       title: 'Actions',
-      routeName: '/appBar4Screen',
+      child: AppBar4Screen(),
     ),
-    NavItem(
+    Example(
       title: 'Overflow Menu',
-      routeName: '/appBar5Screen',
+      child: AppBar5Screen(),
     ),
-    NavItem(
+    Example(
       title: 'Overflow Menu Stateful',
-      routeName: '/appBar6Screen',
+      child: AppBar6Screen(),
     ),
-    NavItem(
+    Example(
       title: 'Gradient Custom App Bar',
-      routeName: '/appBar7Screen',
+      child: AppBar7Screen(),
     ),
   ];
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> navButtons = _navItems
-        .map((model) => NavButton(
-              title: model.title,
-              routeName: model.routeName,
-            ))
-        .toList();
-
     return Scaffold(
       appBar: AppBar(
-        title: Text('AppBar Playground'),
+        title: Text(title),
       ),
-      body: Center(
-        child: Column(children: navButtons),
+      body: Container(
+        color: Colors.grey[300],
+        child: Examples(list: _exampleList,)
       ),
     );
   }
 }
 
-class NavItem {
-  NavItem({@required this.title, @required this.routeName});
-  final title;
-  final routeName;
-}
+// class NavItem {
+//   NavItem({@required this.title, @required this.routeName});
+//   final title;
+//   final routeName;
+// }
 
-class NavButton extends StatelessWidget {
-  NavButton({@required this.title, @required this.routeName});
+// class NavButton extends StatelessWidget {
+//   NavButton({@required this.title, @required this.routeName});
 
-  final title;
-  final routeName;
+//   final title;
+//   final routeName;
 
-  @override
-  Widget build(BuildContext context) => Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: MaterialButton(
-          child: Text(
-            title,
-            style: TextStyle(fontSize: 16.0),
-          ),
-          onPressed: () {
-            Navigator.pushNamed(context, routeName);
-          },
-          color: Colors.blue,
-          textColor: Colors.white,
-        ),
-      );
-}
+//   @override
+//   Widget build(BuildContext context) => Padding(
+//         padding: const EdgeInsets.all(8.0),
+//         child: MaterialButton(
+//           child: Text(
+//             title,
+//             style: TextStyle(fontSize: 16.0),
+//           ),
+//           onPressed: () {
+//             Navigator.pushNamed(context, routeName);
+//           },
+//           color: Colors.blue,
+//           textColor: Colors.white,
+//         ),
+//       );
+// }
 
 class GradientAppBar extends StatelessWidget {
   // Credit: https://sergiandreplace.com/planets-flutter-from-design-to-app/

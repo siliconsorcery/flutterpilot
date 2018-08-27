@@ -1,27 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(MaterialApp(home: SharedPrefsExample()));
 
-class MyApp extends StatelessWidget {
-  @override
+class SharedPrefsExample extends StatelessWidget {
+  SharedPrefsExample({
+    Key key,
+    this.title = "Shared Prefs Example"
+  }): super(key: key);
+  final String title;
+
+ @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'SharedPreferences Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(title),
       ),
-      home: HomePage(),
+      body: Container(
+        color: Colors.grey[300],
+        child: SharedPrefsDemo(),
+      )
     );
   }
 }
 
-class HomePage extends StatefulWidget {
+class SharedPrefsDemo extends StatefulWidget {
   @override
-  _HomePageState createState() => _HomePageState();
+  _SharedPrefsDemoState createState() => _SharedPrefsDemoState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _SharedPrefsDemoState extends State<SharedPrefsDemo> {
   int _counter;
   static const KEY_COUNTER = 'counter';
 
@@ -33,18 +41,13 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('SharedPreferences Playground'),
-      ),
-      body: Container(
-        child: Center(
-          child: RaisedButton(
-            onPressed: () {
-              _incrementCounter();
-            },
-            child: Text('Counter: $_counter'),
-          ),
+    return Container(
+      child: Center(
+        child: RaisedButton(
+          onPressed: () {
+            _incrementCounter();
+          },
+          child: Text('Counter: $_counter'),
         ),
       ),
     );

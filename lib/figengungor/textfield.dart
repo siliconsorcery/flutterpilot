@@ -1,31 +1,36 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(new MyApp());
+void main() => runApp(MaterialApp(home: TextFieldExample()));
 
-//Credits:
-//https://flutter.io/cookbook/forms/text-field-changes/
+// Credits:
+// https://flutter.io/cookbook/forms/text-field-changes/
 
-class MyApp extends StatelessWidget {
+class TextFieldExample extends StatelessWidget {
+  TextFieldExample({
+    Key key,
+    this.title = "Text Field Playground"
+  }): super(key: key);
+  final String title;
+
+  @override
   Widget build(BuildContext context) {
-    return new MaterialApp(
-      title: 'Textfield Demo',
-      theme: new ThemeData(
-        primarySwatch: Colors.blue,
-        accentColor: Colors.pink,
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(title),
       ),
-      home: HomePage(),
+      body: Container(
+        child: TextFieldDemo(),
+      )
     );
   }
 }
 
-class HomePage extends StatefulWidget {
+class TextFieldDemo extends StatefulWidget {
   @override
-  HomePageState createState() {
-    return new HomePageState();
-  }
+  TextFieldDemoState createState() => TextFieldDemoState();
 }
 
-class HomePageState extends State<HomePage> {
+class TextFieldDemoState extends State<TextFieldDemo> {
   final _scaffoldKey = GlobalKey<ScaffoldState>();
   var _name = '<your name>';
   var _age = '<age>';
@@ -62,25 +67,19 @@ class HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      key: _scaffoldKey,
-      appBar: AppBar(
-        title: Text('Textfield Playground'),
-      ),
-      body: ListView(
-        padding: EdgeInsets.all(16.0),
-        children: <Widget>[
-          _getOnChangedDemo(),
-          _getOnSubmittedDemo(),
-          _getTextEditingControllerDemo(),
-          _getFloatingLabelDemo(),
-          _getIconsDemo(),
-          _getTextPrefixSuffixDemo(),
-          _getCustomDemo(),
-        ]
-            .map((item) => Padding(padding: EdgeInsets.all(8.0), child: item))
-            .toList(),
-      ),
+    return ListView(
+      padding: EdgeInsets.all(16.0),
+      children: <Widget>[
+        _getOnChangedDemo(),
+        _getOnSubmittedDemo(),
+        _getTextEditingControllerDemo(),
+        _getFloatingLabelDemo(),
+        _getIconsDemo(),
+        _getTextPrefixSuffixDemo(),
+        _getCustomDemo(),
+      ]
+          .map((item) => Padding(padding: EdgeInsets.all(8.0), child: item))
+          .toList(),
     );
   }
 

@@ -3,20 +3,19 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:read_more_text/read_more_text.dart';
 
-void main() => runApp(MaterialApp(
-      theme: ThemeData(
-        primarySwatch: Colors.indigo,
-        accentColor: Colors.pink,
-      ),
-      title: 'Read More Text Demo',
-      home: DemoApp(),
-    ));
+void main() => runApp(MaterialApp(home: ReadMoreExample()));
 
-class DemoApp extends StatelessWidget {
+class ReadMoreExample extends StatelessWidget {
+  ReadMoreExample({
+    Key key,
+    this.title = "Read More Text"
+  }): super(key: key);
+  final String title;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Read More Text Demo')),
+      appBar: AppBar(title: Text(title)),
       body: DefaultTextStyle.merge(
         style: const TextStyle(
           fontSize: 16.0,

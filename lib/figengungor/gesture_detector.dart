@@ -1,72 +1,35 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:pilot/mockups.dart';
 
-void main() => runApp(new MyApp());
+void main() => runApp(MaterialApp(home: GestureDetectorExample()));
 
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return new MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      routes: {
-        '/': (context) => HomePage(),
-        '/gesture_detector_1': (context) => GestureDetector1(),
-      },
-    );
-  }
-}
+class GestureDetectorExample extends StatelessWidget {
+  GestureDetectorExample({
+    Key key,
+    this.title = "Gesture Detector"
+  }): super(key: key);
+  final String title;
 
-class HomePage extends StatelessWidget {
-  final _navItems = [
-    NavItem(
-        'Gesture Detector 1: \n'
-        'Tap, Double Tap, Long Press',
-        '/gesture_detector_1'),
-  ];
+ final List<Example> _exampleList = [
+    Example(
+      title: "Gesture Detector",
+      child: GestureDetector1(),
+    ),
+ ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('GestureDetector Playground'),
+        title: Text(title),
       ),
-      body: _getNavButtons(context),
+      body: Container(
+        color: Colors.grey[300],
+        child: Examples(list: _exampleList),
+      )
     );
   }
-
-  _getNavButtons(BuildContext context) {
-    return ListView(
-      children: _navItems
-          .map(
-            (item) => Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: RaisedButton(
-                    padding: EdgeInsets.all(8.0),
-                    color: Colors.green,
-                    onPressed: () {
-                      Navigator.pushNamed(context, item.routeName);
-                    },
-                    child: Text(
-                      item.title,
-                      textAlign: TextAlign.center,
-                      style: TextStyle(color: Colors.white, fontSize: 16.0),
-                    ),
-                  ),
-                ),
-          )
-          .toList(),
-    );
-  }
-}
-
-class NavItem {
-  final title;
-  final routeName;
-
-  NavItem(this.title, this.routeName);
 }
 
 class GestureDetector1 extends StatefulWidget {
@@ -86,7 +49,7 @@ class GestureDetector1State extends State<GestureDetector1> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Gesture Detector 1'),
+        title: Text('Gesture Detector'),
       ),
       body: _getBody(context),
       backgroundColor: _backgroundColor,

@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(MaterialApp(home: NavigationExample()));
 
-class MyApp extends StatelessWidget {
+class NavigationExample extends StatelessWidget {
+  NavigationExample({
+    Key key,
+    this.title = "Navigation"
+  }): super(key: key);
+  final String title;
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

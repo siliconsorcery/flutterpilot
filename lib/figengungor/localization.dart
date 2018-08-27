@@ -4,9 +4,15 @@ import 'dart:async';
 import 'package:pilot/figengungor/I10n/messages_all.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(MaterialApp(home: LocalizationExample()));
 
-class MyApp extends StatelessWidget {
+class LocalizationExample extends StatelessWidget {
+  LocalizationExample({
+    Key key,
+    this.title = "Localization"
+  }): super(key: key);
+  final String title;
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

@@ -1,40 +1,39 @@
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
-void main() => runApp(MyApp());
+void main() => runApp(MaterialApp(home: DropDownButtonExample()));
 
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'DropdownButton Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: HomePage(),
-    );
-  }
-}
-
-class HomePage extends StatefulWidget {
-  @override
-  _HomePageState createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  String _selectedCity;
+class DropDownButtonExample extends StatelessWidget {
+  DropDownButtonExample({
+    Key key,
+    this.title = "Drop Down Button Example"
+  }): super(key: key);
+  final String title;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('DropdownButton Playground'),
+        title: Text(title),
       ),
-      body: _getBody(context),
+      body: Container(
+        color: Colors.grey[300],
+        child: DropDownButtonDemo(),
+      )
     );
   }
+}
 
-  _getBody(BuildContext context) {
+class DropDownButtonDemo extends StatefulWidget {
+  @override
+  _DropDownButtonState createState() => _DropDownButtonState();
+}
+
+class _DropDownButtonState extends State<DropDownButtonDemo> {
+  String _selectedCity;
+
+  @override
+  Widget build(BuildContext context) {
     return ListView(
       padding: EdgeInsets.all(16.0),
       children: <Widget>[

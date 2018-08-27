@@ -1,83 +1,58 @@
 import 'package:flutter/material.dart';
+import 'package:pilot/mockups.dart';
 
-void main() => runApp(new MyApp());
+void main() => runApp(MaterialApp(home: GridViewExample()));
 
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return new MaterialApp(
-      title: 'GridView Demo',
-      theme: new ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      routes: {
-        '/': (context) => HomePage(),
-        '/gridview_count': (context) => GridViewCount(),
-        '/gridview_child_aspect_ratio': (context) => GridViewChildAspectRatio(),
-        '/gridview_spacing': (context) => GridViewSpacing(),
-        '/gridview_builder': (context) => GridViewBuilder(),
-        '/gridview_gridtile': (context) => GridViewGridTile(),
-        '/gridview_horizontal': (context) => GridViewHorizontal(),
-        '/gridview_divider': (context) => GridViewDivider(),
-      },
+class GridViewExample extends StatelessWidget {
+  GridViewExample({
+    Key key,
+    this.title = "Grid View"
+  }): super(key: key);
+  final String title;
 
-    );
-  }
-}
-
-class HomePage extends StatelessWidget {
-
-  final _navItems = [
-    NavItem('GridView.count()', '/gridview_count'),
-    NavItem('GridView ChildAspectRatio', '/gridview_child_aspect_ratio'),
-    NavItem('GridView Spacing', '/gridview_spacing'),
-    NavItem('GridView.builder()', '/gridview_builder'),
-    NavItem('GridView GridTile', '/gridview_gridtile'),
-    NavItem('GridView Horizontal', '/gridview_horizontal'),
-    NavItem('GridView Divider', '/gridview_divider'),
+  final List<Example> _exampleList = [
+    Example(
+      title: "Count",
+      child: GridViewCount(),
+    ),
+    Example(
+      title: "Child Aspect Ratio",
+      child: GridViewChildAspectRatio(),
+    ),
+    Example(
+      title: "Spacind",
+      child: GridViewSpacing(),
+    ),
+    Example(
+      title: "Builder",
+      child: GridViewBuilder(),
+    ),
+    Example(
+      title: "Grid Tile",
+      child: GridViewGridTile(),
+    ),
+    Example(
+      title: "Horizontal",
+      child: GridViewHorizontal(),
+    ),
+    Example(
+      title: "Divider",
+      child: GridViewDivider(),
+    ),
   ];
-
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('GridView Playground'),
+        title: Text(title),
       ),
-      body: _getNavButtons(context),
-    );
-  }
-
-  _getNavButtons(BuildContext context) {
-    return ListView(
-      children: _navItems
-          .map(
-            (item) => Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: RaisedButton(
-            padding: EdgeInsets.all(8.0),
-            color: Colors.green,
-            onPressed: () {
-              Navigator.pushNamed(context, item.routeName);
-            },
-            child: Text(
-              item.title,
-              textAlign: TextAlign.center,
-              style: TextStyle(color: Colors.white, fontSize: 16.0),
-            ),
-          ),
-        ),
+      body: Container(
+        color: Colors.grey[300],
+        child: Examples(list: _exampleList),
       )
-          .toList(),
     );
   }
-}
-
-class NavItem {
-  final title;
-  final routeName;
-
-  NavItem(this.title, this.routeName);
 }
 
 class GridViewBuilder extends StatelessWidget {

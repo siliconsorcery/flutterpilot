@@ -1,31 +1,34 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(new MyApp());
+void main() => runApp(MaterialApp(home: ButtonExample()));
 
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+class ButtonExample extends StatelessWidget {
+  ButtonExample({
+    Key key,
+    this.title = "Button Playground",
+  }): super(key: key);
+  final String title;
 
   @override
   Widget build(BuildContext context) {
-    return new MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        accentColor: Colors.deepOrange,
-      ),
-      home: new HomePage(),
-    );
+    return ButtonExampleDemo(title: title);
   }
 }
 
-class HomePage extends StatelessWidget {
+class ButtonExampleDemo extends StatelessWidget {
+  ButtonExampleDemo({
+    Key key,
+    this.title,
+  }): super(key: key);
+  final String title;
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 5,
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Button Playground'),
+          title: Text(title),
           bottom: TabBar(
             isScrollable: true,
             tabs: [

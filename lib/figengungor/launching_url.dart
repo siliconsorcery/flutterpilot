@@ -1,22 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(MaterialApp(home: LaunchingUrlExample()));
 
-class MyApp extends StatelessWidget {
+class LaunchingUrlExample extends StatelessWidget {
+  LaunchingUrlExample({
+    Key key,
+    this.title = "Figen Güngör Playground"
+  }): super(key: key);
+  final String title;
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Launching Url Playground',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(title),
       ),
-      home: HomePage(),
+      body: Container(
+        color: Colors.grey[300],
+        child: LaunchingUrlDemo(),
+      )
     );
   }
 }
 
-class HomePage extends StatelessWidget {
+class LaunchingUrlDemo extends StatelessWidget {
   static final String url = 'https://flutter.io';
   static final String emailAddress = 'blabla@blabla.com';
   static final String subject = 'Flutter News';
@@ -33,15 +41,6 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Launching Url Playground'),
-      ),
-      body: _getBody(),
-    );
-  }
-
-  Widget _getBody() {
     return ListView(
       children: _navItems
           .map((item) => Padding(

@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:pilot/mockups.dart';
 
+void main() => runApp(MaterialApp(home: BottomNavigationzz()));
+
 class BottomNavigationzz extends StatefulWidget {
-  BottomNavigationzz({Key key, this.title}) : super(key: key);
+  BottomNavigationzz({
+    Key key,
+    this.title ="Bottom Navigation Playground",
+  }) : super(key: key);
   final String title;
 
   @override
-  _BottomNavigationState createState() => new _BottomNavigationState();
+  _BottomNavigationState createState() => _BottomNavigationState();
 }
 
 class _BottomNavigationState extends State<BottomNavigationzz> {
@@ -15,9 +20,9 @@ class _BottomNavigationState extends State<BottomNavigationzz> {
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
+    return Scaffold(
       appBar: AppBar(
-        title: new Text(widget.title),
+        title: Text(widget.title),
       ),
       body: PageView(
         children: <Widget>[
@@ -78,7 +83,7 @@ class _BottomNavigationState extends State<BottomNavigationzz> {
   @override
   void initState() {
     super.initState();
-    _pageController = new PageController();
+    _pageController = PageController();
   }
 
   @override

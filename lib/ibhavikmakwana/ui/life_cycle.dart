@@ -1,17 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-class Lifecycle extends StatefulWidget {
-  final String title;
+void main() => runApp(MaterialApp(home: Lifecycle()));
 
-  Lifecycle({Key key, this.title}) : super(key: key);
+class Lifecycle extends StatefulWidget {
+  Lifecycle({
+    Key key, 
+    this.title = "Life Cycle Playground",
+  }) : super(key: key);
+  final String title;
 
   @override
   _LifecycleState createState() => _LifecycleState();
 }
 
 class _LifecycleState extends State<Lifecycle> with WidgetsBindingObserver {
-  List<AppLifecycleState> _appLifecycleState = new List();
+  List<AppLifecycleState> _appLifecycleState = List();
 
   @override
   void initState() {
@@ -35,11 +39,11 @@ class _LifecycleState extends State<Lifecycle> with WidgetsBindingObserver {
 
   List<Widget> _stateString() {
     if (_appLifecycleState != null) {
-      return new List<Widget>.generate(_appLifecycleState.length, (int index) {
+      return List<Widget>.generate(_appLifecycleState.length, (int index) {
         return Text('lifecycle state : $_appLifecycleState,');
       });
     } else {
-      return new List<Widget>.generate(1, (int index) {
+      return List<Widget>.generate(1, (int index) {
         return Text('App started');
       });
     }

@@ -1,87 +1,84 @@
 import 'package:flutter/material.dart';
 
 //https://stackoverflow.com/questions/51304568/scaffold-of-called-with-a-context-that-does-not-contain-a-scaffold
+void main() => runApp(MaterialApp(home: SnackbarExample()));
 
-void main() => runApp(MyApp());
+class SnackbarExample extends StatelessWidget {
+  SnackbarExample({
+    Key key,
+    this.title = "Snackbar Playground"
+  }): super(key: key);
+  final String title;
 
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: HomePage(),
-    );
-  }
-}
-
-class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('SnackBar Playground'),
+        title: Text(title),
       ),
-      //Can't use the context of widget who instantiate Scaffold
-      //In order to display SnackBar, we need to use context of the child
-      //of Scaffold, so we wrap the body widget with Builder
-      //OR
-      //Create a custom widget for body => DemoPage()
-      body: Builder(
-        builder: (context) => Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  RaisedButton(
-                    color: Colors.pink,
-                    textColor: Colors.white,
-                    onPressed: () {
-                      _displaySnackBar(context);
-                    },
-                    child: Text('Simple'),
-                  ),
-                  RaisedButton(
-                    color: Colors.pink,
-                    textColor: Colors.white,
-                    onPressed: () {
-                      _displaySnackBarWithBackgroundColor(context);
-                    },
-                    child: Text('Background Color'),
-                  ),
-                  RaisedButton(
-                    color: Colors.pink,
-                    textColor: Colors.white,
-                    onPressed: () {
-                      _displaySnackBarWithAction(context);
-                    },
-                    child: Text('With Action'),
-                  ),
-                  RaisedButton(
-                    color: Colors.pink,
-                    textColor: Colors.white,
-                    onPressed: () {
-                      _displaySnackBarCustom(context);
-                    },
-                    child: Text('Custom'),
-                  ),
-                  RaisedButton(
-                    color: Colors.pink,
-                    textColor: Colors.white,
-                    onPressed: () {
-                      _displaySnackBar5Seconds(context);
-                    },
-                    child: Text('5 Seconds Duration'),
-                  ),
-                ]
-                    .map((i) => Padding(
-                          padding: EdgeInsets.all(8.0),
-                          child: i,
-                        ))
-                    .toList(),
-              ),
+      body: Container(
+        color: Colors.grey[300],
+        child: SnackbarDemo(),
+      )
+    );
+  }
+}
+
+class SnackbarDemo extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Builder(
+      builder: (context) => Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            RaisedButton(
+              color: Colors.pink,
+              textColor: Colors.white,
+              onPressed: () {
+                _displaySnackBar(context);
+              },
+              child: Text('Simple'),
             ),
+            RaisedButton(
+              color: Colors.pink,
+              textColor: Colors.white,
+              onPressed: () {
+                _displaySnackBarWithBackgroundColor(context);
+              },
+              child: Text('Background Color'),
+            ),
+            RaisedButton(
+              color: Colors.pink,
+              textColor: Colors.white,
+              onPressed: () {
+                _displaySnackBarWithAction(context);
+              },
+              child: Text('With Action'),
+            ),
+            RaisedButton(
+              color: Colors.pink,
+              textColor: Colors.white,
+              onPressed: () {
+                _displaySnackBarCustom(context);
+              },
+              child: Text('Custom'),
+            ),
+            RaisedButton(
+              color: Colors.pink,
+              textColor: Colors.white,
+              onPressed: () {
+                _displaySnackBar5Seconds(context);
+              },
+              child: Text('5 Seconds Duration'),
+            ),
+          ]
+              .map((i) => Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: i,
+                  ))
+              .toList(),
+        ),
       ),
     );
   }

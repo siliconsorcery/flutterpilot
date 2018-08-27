@@ -1,10 +1,13 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 
-class ProgressButton extends StatefulWidget {
-  ProgressButton({Key key, this.title}) : super(key: key);
+void main() => runApp(MaterialApp(home: ProgressButton()));
 
+class ProgressButton extends StatefulWidget {
+  ProgressButton({
+    Key key, 
+    this.title = "Progress Button Playground",
+  }) : super(key: key);
   final String title;
 
   @override

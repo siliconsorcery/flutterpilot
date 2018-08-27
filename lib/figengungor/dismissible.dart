@@ -1,41 +1,40 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(MaterialApp(home: DismissibleExample()));
 
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return new MaterialApp(
-      title: 'Dismissible Playground',
-      theme: new ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: HomePage(),
-    );
-  }
-}
-
-class HomePage extends StatefulWidget {
-  @override
-  _HomePageState createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  final List<String> _groceryList = ['cucumber', 'tomato', 'potato', 'milk'];
-
-  @override
+class DismissibleExample extends StatelessWidget {
+  DismissibleExample({
+    Key key,
+    this.title = "Dismissible Example"
+  }): super(key: key);
+  final String title;
+  
+   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Dismissible Playground'),
+        title: Text(title),
       ),
-      body: _getBody(context),
+      body: Container(
+        color: Colors.grey[300],
+        child: DismissibleDemo(),
+      )
     );
   }
+}
 
-  Widget _getBody(BuildContext context) {
+class DismissibleDemo extends StatefulWidget {
+  @override
+  _DismissibleDemoState createState() => _DismissibleDemoState();
+}
+
+class _DismissibleDemoState extends State<DismissibleDemo> {
+  final List<String> _groceryList = ['cucumber', 'tomato', 'potato', 'milk', 'banana', 'chocolate'];
+
+  @override
+  Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(8.0),
+      padding: EdgeInsets.all(0.0),
       child: Column(
         children: <Widget>[
           Expanded(
@@ -80,9 +79,9 @@ class _HomePageState extends State<HomePage> {
           ),
           Container(
             color: Colors.red,
-            child: Text(
-              'Remaining: ${_groceryList.toString()}',
-              style: TextStyle(color: Colors.white, fontSize: 18.0),
+            padding: EdgeInsets.all(8.0),
+            child: Text('${_groceryList.toString()}',
+              style: TextStyle(color: Colors.white),
             ),
           ),
         ],

@@ -1,30 +1,22 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(MaterialApp(home: DrawerExample()));
 
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return new MaterialApp(
-      title: 'Drawer Playground',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: HomePage(),
-    );
-  }
-}
+class DrawerExample extends StatelessWidget {
+  DrawerExample({
+    Key key,
+    this.title = "Figen Gungor Playground"
+  }): super(key: key);
+  final String title;
 
-class HomePage extends StatelessWidget {
-  @override
+   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Drawer Playground'),
+        title: Text(title),
       ),
       drawer: Drawer(
         child: ListView(
-          // Important: Remove any padding from the ListView.
           padding: EdgeInsets.zero,
           children: <Widget>[
             DrawerHeader(
@@ -68,27 +60,21 @@ class HomePage extends StatelessWidget {
           ],
         ),
       ),
-      body: _getBody(context),
-    );
-  }
-
-  _getBody(BuildContext context) {
-    return Builder(
-      builder: (BuildContext context) => Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                RaisedButton(
-                  color: Colors.blue,
-                  textColor: Colors.white,
-                  onPressed: () {
-                    Scaffold.of(context).openDrawer();
-                  },
-                  child: Text('Open Drawer'),
-                ),
-              ],
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            RaisedButton(
+              color: Colors.blue,
+              textColor: Colors.white,
+              onPressed: () {
+                Scaffold.of(context).openDrawer();
+              },
+              child: Text('Open Drawer'),
             ),
-          ),
+          ],
+        ),
+      ),
     );
   }
 }

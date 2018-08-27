@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 
+void main() => runApp(MaterialApp(home: AnimatedSizeDemo()));
+
 class AnimatedSizeDemo extends StatefulWidget {
-  AnimatedSizeDemo({Key key, this.title}) : super(key: key);
+  AnimatedSizeDemo({
+    Key key, 
+    this.title = "Animated Size Playground",
+  }) : super(key: key);
   final String title;
 
   @override
