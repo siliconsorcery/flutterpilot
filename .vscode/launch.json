@@ -233,6 +233,12 @@
             "program": "${workspacefolder}lib/figengungor/stack.dart"
         },
         {
+            "name": "state_management",
+            "request": "launch",
+            "type": "dart",
+            "program": "${workspacefolder}lib/state_management/main.dart"
+        },
+        {
             "name": "tab_bar",
             "request": "launch",
             "type": "dart",

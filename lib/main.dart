@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:pilot/examples/draggable_list.dart';
 import 'package:pilot/examples/signature.dart';
 import 'package:pilot/examples/spin_tween.dart';
-import 'package:pilot/figengungor/animation/animation.dart';
 import 'package:pilot/figengungor/main.dart';
 import 'package:pilot/ibhavikmakwana/main.dart';
 import 'package:pilot/mockups.dart';
+import 'package:pilot/state_management/main.dart';
 import 'package:pilot/strings.dart';
 import 'package:pilot/examples/saturation.dart';
 
@@ -38,6 +38,11 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
 
   final List<Example> _exampleList = [
+    Example(
+      title: "State Management Playground",
+      subtitle: "",
+      child: StateManagementPage(),
+    ),
     Example(
       title: "Figen Güngör Playground",
       color: Colors.yellow[200],
