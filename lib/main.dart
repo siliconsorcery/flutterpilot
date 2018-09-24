@@ -4,12 +4,18 @@ import 'package:pilot/examples/signature.dart';
 import 'package:pilot/examples/spin_tween.dart';
 import 'package:pilot/figengungor/main.dart';
 import 'package:pilot/ibhavikmakwana/main.dart';
-import 'package:pilot/mockups.dart';
+import 'package:pilot/movie/main.dart';
+import 'package:pilot/shopping/main.dart';
+import 'package:pilot/utils/mockups.dart';
 import 'package:pilot/state_management/main.dart';
-import 'package:pilot/strings.dart';
+import 'package:pilot/utils/strings.dart';
 import 'package:pilot/examples/saturation.dart';
+import 'package:silicon/sorcery.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  Log.info('--- Cold Start ---');
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
 
@@ -18,7 +24,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         title: Strings.appName,
         theme: ThemeData(
-          primarySwatch: Colors.blue,
+          primarySwatch: Colors.red,
           fontFamily: Strings.fontRobotoRegular,
         ),
         debugShowCheckedModeBanner: false,
@@ -38,6 +44,16 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
 
   final List<Example> _exampleList = [
+    Example(
+      title: 'Shopping',
+      subtitle: '',
+      child: ShoppingPage(),
+    ),
+    Example(
+      title: 'Movie Lookup',
+      subtitle: '',
+      child: MoviePage(),
+    ),
     Example(
       title: "State Management Playground",
       subtitle: "",

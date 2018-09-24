@@ -1,21 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:pilot/mockups.dart';
-import 'package:pilot/ibhavikmakwana/ui/about_list_title.dart';
-import 'package:pilot/ibhavikmakwana/ui/animated_icons.dart';
-import 'package:pilot/ibhavikmakwana/ui/animated_size.dart';
-import 'package:pilot/ibhavikmakwana/ui/animated_switcher.dart';
-import 'package:pilot/ibhavikmakwana/ui/app_bar.dart';
-import 'package:pilot/ibhavikmakwana/ui/bottom_navigation.dart';
-import 'package:pilot/ibhavikmakwana/ui/collapsible_toolbar.dart';
-import 'package:pilot/ibhavikmakwana/ui/drag_drop.dart';
-import 'package:pilot/ibhavikmakwana/ui/keyboard.dart';
-import 'package:pilot/ibhavikmakwana/ui/life_cycle.dart';
-import 'package:pilot/ibhavikmakwana/ui/navigation_drawer.dart';
-import 'package:pilot/ibhavikmakwana/ui/progress_button.dart';
-import 'package:pilot/ibhavikmakwana/ui/staggered.dart';
-import 'package:pilot/ibhavikmakwana/ui/stepper.dart';
-import 'package:pilot/ibhavikmakwana/ui/tab_bar.dart';
-import 'package:pilot/ibhavikmakwana/ui/text.dart';
+import 'package:pilot/utils/mockups.dart';
+
+import 'src/about_list_title.dart';
+import 'src/animated_icons.dart';
+import 'src/animated_size.dart';
+import 'src/animated_switcher.dart';
+import 'src/app_bar.dart';
+import 'src/bottom_navigation.dart';
+import 'src/collapsible_toolbar.dart';
+import 'src/drag_drop.dart';
+import 'src/keyboard.dart';
+import 'src/life_cycle.dart';
+import 'src/navigation_drawer.dart';
+import 'src/progress_button.dart';
+import 'src/staggered.dart';
+import 'src/stepper.dart';
+import 'src/tab_bar.dart';
+import 'src/text.dart';
 
 void main() => runApp(MaterialApp(home: IBhavikMakwana()));
 

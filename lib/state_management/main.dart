@@ -1,15 +1,16 @@
 
-import 'package:flutter/material.dart';
-import 'package:pilot/state_management/database.dart';
-import 'package:pilot/state_management/inherited_page.dart';
-import 'package:pilot/state_management/inherited_provider.dart';
-import 'package:pilot/state_management/redux_page.dart';
-import 'package:pilot/state_management/scoped_model_page.dart';
-import 'package:pilot/state_management/set_state_page.dart';
-import 'package:pilot/state_management/streams_page.dart';
 import 'package:redux/redux.dart';
 import 'package:scoped_model/scoped_model.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+
+import 'src/database.dart';
+import 'src/inherited_page.dart';
+import 'src/inherited_provider.dart';
+import 'src/redux_page.dart';
+import 'src/scoped_model_page.dart';
+import 'src/set_state_page.dart';
+import 'src/streams_page.dart';
 
 void main() => runApp(MaterialApp(home: StateManagementPage()));
 

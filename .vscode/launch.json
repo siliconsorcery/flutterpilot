@@ -5,6 +5,12 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "ALL",
+            "request": "launch",
+            "type": "dart",
+            "program": "${workspacefolder}lib/main.dart"
+        },
+        {
             "name": "animation",
             "request": "launch",
             "type": "dart",
@@ -167,10 +173,10 @@
             "program": "${workspacefolder}lib/figengungor/localization.dart"
         },
         {
-            "name": "main",
+            "name": "movie",
             "request": "launch",
             "type": "dart",
-            "program": "${workspacefolder}lib/main.dart"
+            "program": "${workspacefolder}lib/movie/main.dart"
         },
         {
             "name": "navigation",
@@ -201,6 +207,12 @@
             "request": "launch",
             "type": "dart",
             "program": "${workspacefolder}lib/figengungor/shared_prefs.dart"
+        },
+        {
+            "name": "shopping",
+            "request": "launch",
+            "type": "dart",
+            "program": "${workspacefolder}lib/shopping/main.dart"
         },
         {
             "name": "signature",

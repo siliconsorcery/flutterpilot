@@ -6,30 +6,37 @@ environment:
   sdk: ">=2.0.0-dev.68.0 <3.0.0"
 
 dependencies:
-  cached_network_image: #^0.4.1+1 # Patched for dart 2 environment
+  dart:
+    path: ../dart
+  cached_network_image: #^0.4.2 
+    # Patched for dart 2 environment
     git: git://github.com/Cretezy/flutter_cached_network_image.git 
-  cloud_firestore:
+  cloud_firestore: ^0.7.4
   cupertino_icons: ^0.1.2
-  dragable_flutter_list: any #^0.1.4
-  diagonal: # Patched for dart 2 environment
+  dragable_flutter_list: ^0.1.4
+  diagonal: #^1.0.1 
+    # Patched for dart 2 environment
     git: git://github.com/figengungor/diagonal.git
-  firebase_auth:
+  firebase_auth: ^0.5.19
   flutter:
     sdk: flutter
-  flutter_localizations:
+  flutter_localizations: 
     sdk: flutter
-  flutter_redux:
-  flutter_slidable:
-  font_awesome_flutter:
-  intl:
-  intl_translation: any #"^0.16.6"
-  read_more_text: # Patched for dart 2 environment
+  flutter_redux: ^0.5.2
+  flutter_slidable: ^0.4.3
+  font_awesome_flutter: ^8.0.1
+  intl: ^0.15.7
+  intl_translation: ^0.17.0
+  read_more_text: #^0.0.1 
+    # Patched for dart 2 environment
     git: git://github.com/figengungor/read_more_text
-  redux:
-  scoped_model:
-  shared_preferences: any #^0.4.2
-  transparent_image: any #^0.1.0
-  url_launcher: any #^3.0.3
+  redux: ^3.0.0
+  scoped_model: ^0.3.0
+  shared_preferences: ^0.4.2
+  silicon:
+    path: //Users/john/My/Projects/SiliconSorcery/silicon
+  transparent_image: ^0.1.0
+  url_launcher: ^3.0.3
 
 dev_dependencies:
   flutter_test:
